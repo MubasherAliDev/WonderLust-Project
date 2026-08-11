@@ -61,7 +61,7 @@ app.use(express.static(path.join(__dirname,"/Public")))
 const store = MongoStore.create({
   mongoUrl: dbUrl,
   crypto: {
-    secret: "process.env.SECRET",
+    secret: process.env.SECRET,
   },
   touchAfter: 24 * 3600,
 });
@@ -72,7 +72,7 @@ store.on("error", (err) => {
 
 const sessionOptions={
   store,
-  secret:"process.env.SECRET",
+  secret:process.env.SECRET,
   resave:false,
   saveUninitialized: true,
   cookie:{
@@ -102,15 +102,6 @@ app.use((req,res,next)=>{
   next()
 })
 
-app.get("/demo",async(req,res)=>{
-  let fakeUser=new User({
-    email:"ali@gmail.com",
-    username:"delta-batch",
-  })
-
- let registerUser=await User.register(fakeUser,"helloworld");
-res.send(registerUser);
-})
 app.use("/listings",listingsRouter);
 app.use("/listings/:id/reviews",reviewsRouter)
 app.use("/",userRouter);
@@ -128,7 +119,9 @@ app.use("/",userRouter);
 //   })
 //   res.send("successful saved in db")
 // }))
-
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
 
 app.all('/{*path}',(req,res,next)=>{
   next(new ExpressError(404,"Page Not Found"))
