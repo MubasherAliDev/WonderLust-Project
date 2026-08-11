@@ -1,0 +1,13 @@
+<%# iss ma hum na msg show kaia hia jo flash ko use ka kaia tha ya sara cookie wala session hai apna college ka %>
+<%if(typeof messages !== 'undefined' && messages && messages.length){%>
+    <div class="alert alert-success alert-dismissible fade show col-6 offset-3 mt-3" role="alert">
+        <%= messages%>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <%}%>
+<% if (typeof error !== 'undefined' && error && error.length){ %>
+    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3 mt-3" role="alert">
+        <%= error%>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <%}%>

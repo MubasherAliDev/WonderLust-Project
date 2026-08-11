@@ -1,0 +1,225 @@
+<% layout("/layouts/Boilerplate") %>
+<style>
+  #filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  .filters {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter {
+    min-width: 55px;
+    text-align: center;
+    margin-right: 0;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+  }
+
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+    transform: translateY(-2px);
+  }
+
+  .filter i {
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .filter p {
+    font-size: 0.72rem;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  /* Tax information */
+  .tax-info {
+    display: none;
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-left: 3px;
+  }
+
+  /* =========================
+     TAX TOGGLE
+  ========================= */
+
+  .tax-toggle {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .form-check-reverse {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+
+    padding: 0.65rem 1rem;
+
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 999px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+margin-left: 4rem;
+    transition: all 0.2s ease;
+  }
+
+  .form-check-reverse:hover {
+    border-color: #aaaaaa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-check-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #333333;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  /* Switch */
+  .form-check-input {
+    width: 2.8rem !important;
+    height: 1.5rem !important;
+
+    margin: 0 !important;
+
+    cursor: pointer;
+
+    border: 1px solid #bdbdbd !important;
+    background-color: #eeeeee !important;
+
+    box-shadow: none !important;
+    transition: all 0.25s ease;
+  }
+
+  /* Switch ON */
+  .form-check-input:checked {
+    background-color: #222222 !important;
+    border-color: #222222 !important;
+  }
+
+  .form-check-input:focus {
+    box-shadow: none !important;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+
+    #filters {
+      gap: 0.8rem;
+    }
+
+    .filters {
+      width: 100%;
+      gap: 1.4rem;
+    }
+
+    .tax-toggle {
+      width: 100%;
+      margin-left: 0;
+      justify-content: flex-start;
+    }
+
+    .form-check-reverse {
+      width: fit-content;
+    }
+  }
+</style>
+
+
+<!-- <h2>All Lists</h2> -->
+
+<div id="filters">
+<div class="filters d-flex">
+  <a href="/listings?category=Trending" class="filter text-decoration-none text-dark">
+    <div><i class="fa-solid fa-fire"></i></div>
+    <p>Trending</p>
+  </a>
+  <a href="/listings?category=Rooms" class="filter text-decoration-none text-dark">
+    <div><i class="fa-solid fa-door-open"></i></div>
+    <p>Rooms</p>
+  </a>
+  <a href="/listings?category=Iconic Cities" class="filter text-decoration-none text-dark">
+    <div><i class="fa-solid fa-mountain-city"></i></div>
+    <p>Iconic Cities</p>
+  </a>
+  <a href="/listings?category=Mountains" class="filter text-decoration-none text-dark">
+    <div><i class="fa-solid fa-mountain"></i></div>
+    <p>Mountains</p>
+  </a>
+  <a href="/listings?category=Castles" class="filter text-decoration-none text-dark">
+    <div><i class="fa-solid fa-fort-awesome"></i></div>
+    <p>Castles</p>
+  </a>
+  <a href="/listings?category=Luxury Places" class="filter text-decoration-none text-dark">
+    <div><i class="fa-solid fa-crown"></i></div>
+    <p>Luxury Places</p>
+  </a>
+  <a href="/listings?category=Farms" class="filter text-decoration-none text-dark">
+    <div><i class="fa-solid fa-cow"></i></div>
+    <p>Farms</p>
+  </a>
+  <a href="/listings?category=Arctic" class="filter text-decoration-none text-dark">
+    <div><i class="fa-solid fa-snowflake"></i></div>
+    <p>Arctic</p>
+  </a>
+</div>
+<div>
+  <div class="form-check-reverse form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+  <label class="form-check-label" for="switchCheckDefault">Default total after Taxes</label>
+</div>
+</div>
+</div>
+<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 mt-2">
+
+  <% for(let list of allList){ %>
+    <div class="col">
+        <a href="/listings/<%= list._id %>" class="listing-link">
+      <div class="card listing-card"> 
+        <img src="<%=list.image.url%>" class="card-img-top" alt="list_image" style="height: 12rem;">
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%=list.title%></b><br>
+            <%=list.price ? list.price.toLocaleString("ur-PK") : "N/A"%> / Night
+          <i class="tax-info">&nbsp; +18% Sales Tax</i>
+          </p>
+        </div>
+      </div>
+     </a>
+    </div>
+  <% } %>
+</div>
+<script>
+  let taxSwitch=document.getElementById("switchCheckDefault")
+taxSwitch.addEventListener("click",()=>{
+  let taxinfo=document.getElementsByClassName("tax-info")
+  console.log("click")
+  for(info of taxinfo){
+    if(info.style.display!="inline"){
+info.style.display="inline"
+    }else{
+      info.style.display="none"
+    }
+    
+  }
+})
+</script>
