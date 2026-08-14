@@ -89,8 +89,6 @@ router.delete(
   "/:id",
   isLoggedIn,
   isOwner,
-   upload.single("listing[image]"),
-     validateListing,
   wrapAsync(listingController.deleteRoute),
 );
 
