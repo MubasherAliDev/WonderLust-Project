@@ -1,81 +1,54 @@
 <style>
   /* Navbar and search */
+/* Search button */
 
-  /* Search button */
+.btn-search {
+  background-color: #fe424d;
+  color: white;
+  border-radius: 25px;
+}
 
-  .btn-search {
-    background-color: #fe424d;
-    color: #ffffff;
-    border: none;
-    border-radius: 25px;
-    padding: 0.55rem 1rem;
-    transition: all 0.2s ease;
-  }
+.btn-search:hover {
+  background-color: #fe424d;
+  color: white;
+}
 
-  .btn-search:hover {
-    background-color: #e93642;
-    color: #ffffff;
-  }
-
-  .btn-search i {
-    margin-right: 0.5rem;
-  }
+.btn-search i {
+  display: inline;
+  margin-right: 0.5rem;
+}
 
 
-  /* Search input */
+/* Search input */
 
-  .search-inp {
-    border-radius: 25px;
-    border: 1px solid #dddddd;
-    transition: all 0.2s ease;
-  }
-
-  .search-inp:focus {
-    border-color: #fe424d;
-    box-shadow: 0 0 0 3px rgba(254, 66, 77, 0.08);
-  }
+.search-inp {
+  border-radius: 25px;
+}
 
 
-  /* Search suggestions */
+/* Search suggestions */
 
-  .suggestions-box {
-    top: 100%;
-    left: 0;
-    width: 100%;
-    max-height: 280px;
+.suggestions-box {
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 1050;
+  margin-top: 4px;
+  overflow-y: auto;
+  display: none;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
-    margin-top: 6px;
-    overflow-y: auto;
+.suggestions-box .list-group-item {
+  cursor: pointer;
+}
 
-    display: none;
-
-    background-color: #ffffff;
-    border: 1px solid #eeeeee;
-    border-radius: 12px;
-
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
-
-    z-index: 2000;
-  }
-
-  .suggestions-box .list-group-item {
-    padding: 0.75rem 1rem;
-
-    border: none;
-    border-bottom: 1px solid #f1f1f1;
-
-    background-color: #ffffff;
-
-    cursor: pointer;
-
-    font-size: 0.85rem;
-
-    transition: background-color 0.2s ease;
-  }
-
-  .suggestions-box .list-group-item:hover {
-    background-color: #fff4f4;
-  }
+.suggestions-box .list-group-item:hover {
+  background-color: #f8f9fa;
+}
 
 
   /* Mobile search */
