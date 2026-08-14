@@ -49,7 +49,7 @@ const initDb = async () => {
 
     updatedData.push({
       ...obj,
-      owner: "6a6f201ebcbd947c84703bdb",
+      owner: "6a7be057c05cf53b0cc7429a",
       geometry,
     });
   }
