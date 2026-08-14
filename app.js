@@ -132,7 +132,7 @@ app.use((err, req, res, next) => {
     err = new ExpressError(404, "Listing not found!")
   }
   let { status = 500, message = "Something went Wrong" } = err;
-  res.status(status).render("error.ejs", { message });
+  res.status(status).render("Error.ejs", { message });
 });
 
 app.listen(3000,()=>{
