@@ -102,8 +102,6 @@ footer {
   width: 100%;
 }
 
-/* Responsive */
-
 /* Card */
 .listing-card{
   border:none !important;
@@ -181,7 +179,7 @@ footer {
     color: #fe424d !important;
   }
 
-  /* Background dim jab menu khula ho */
+
   body.menu-open::after {
     content: "";
     position: fixed;
@@ -193,7 +191,7 @@ footer {
     z-index: 1040;
   }
 }
-/* Listing Carousel (Show/Individual Page) */
+/* Listing  Individual Page) */
 .listing-carousel {
   border-radius: 1.5rem;
   overflow: hidden;
@@ -205,7 +203,7 @@ footer {
   object-fit: cover;
 }
 
-/* Prev/Next buttons - chota aur centered dikhne ke liye */
+/* /Next buttons - chote aur centered dikhne ke liye */
 .listing-carousel .carousel-control-prev,
 .listing-carousel .carousel-control-next {
   width: 4rem;
